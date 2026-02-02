@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  :root {
+    --gradient-primary: linear-gradient(135deg, #9333ea, #ec4899);
+    --gradient-accent: linear-gradient(135deg, #f97316, #f43f5e);
+    --gradient-warm: linear-gradient(135deg, #faf5ff, #ffffff, #fff7ed);
+    --gradient-card-hover: 0 8px 30px rgba(147, 51, 234, 0.1);
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Staggered animation delays */
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
+
+/* Fade edges for horizontal scroll */
+.scroll-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8px, black calc(100% - 8px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 8px, black calc(100% - 8px), transparent);
+}
+
+/* Wave divider */
+.wave-divider {
+  position: relative;
+}
+
+.wave-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: inherit;
+  clip-path: url(#wave-clip);
+}
+
+/* Skeleton pulse with warm tones */
+@keyframes warmPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-warm-pulse {
+  animation: warmPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Tag color rotation */
+.tag-color-0 { @apply bg-violet-100 text-violet-700; }
+.tag-color-1 { @apply bg-orange-100 text-orange-700; }
+.tag-color-2 { @apply bg-emerald-100 text-emerald-700; }
+.tag-color-3 { @apply bg-pink-100 text-pink-700; }
+.tag-color-4 { @apply bg-sky-100 text-sky-700; }
+.tag-color-5 { @apply bg-amber-100 text-amber-700; }
