@@ -8,9 +8,7 @@ export default function FeedbackBox() {
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
 
-  const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-
-  if (!formId) return null;
+  const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID || 'mgozrawb';
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
